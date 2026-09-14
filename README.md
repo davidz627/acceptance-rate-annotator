@@ -43,7 +43,7 @@ Matching is exact-case against the Scorecard name, the Scorecard `ALIAS` field, 
 ```
 manifest.json          MV3 manifest
 src/content.js         finds names in text nodes, inserts badges, watches DOM mutations
-src/content.css        badge styles (colour tiers: <10%, 10–25%, 25–50%, 50%+)
+src/content.css        badge styles (green <10% → red 50%+; lower rate = more selective)
 src/popup.html/.js     on/off toggle
 data/colleges.js       generated dataset (committed so the extension works out of the box)
 data/aliases.json      curated aliases + blocklist

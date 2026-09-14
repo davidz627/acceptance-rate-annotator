@@ -12,7 +12,7 @@
   cursor: help;
   user-select: none;
 }
-.car-badge-t1 { background: #b91c1c; }  /* < 10% */
-.car-badge-t2 { background: #c2410c; }  /* 10–25% */
-.car-badge-t3 { background: #a16207; }  /* 25–50% */
-.car-badge-t4 { background: #15803d; }  /* >= 50% */
+.car-badge-t1 { background: #15803d; }  /* < 10%  (most selective) */
+.car-badge-t2 { background: #a16207; }  /* 10–25% */
+.car-badge-t3 { background: #c2410c; }  /* 25–50% */
+.car-badge-t4 { background: #b91c1c; }  /* >= 50% (least selective) */

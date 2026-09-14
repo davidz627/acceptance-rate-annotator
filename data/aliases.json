@@ -1,0 +1,527 @@
+{
+  "_comment": "Keys are exact College Scorecard INSTNM values; values are extra strings the content script should treat as that school (case-sensitive). Scorecard's own ALIAS field is only used for ALL-CAPS acronyms and multi-word phrases; single-word aliases must be listed here. _blocklist suppresses Scorecard aliases that are too ambiguous.",
+  "_blocklist": [
+    "AMU",
+    "Baylor",
+    "Big Green",
+    "Big Red",
+    "Brown",
+    "CIA",
+    "CSI",
+    "CSU",
+    "CTX",
+    "CULVER",
+    "Cal",
+    "Camp Denidoo",
+    "Central",
+    "City Tech",
+    "Colorado Seminary",
+    "Columbia",
+    "D.C.",
+    "DIT",
+    "Duke",
+    "EMU",
+    "ESF",
+    "Elon",
+    "Emory",
+    "Fighting Irish",
+    "GSU",
+    "Golden Buffs",
+    "HILLTOPPERS",
+    "Hilltoppers",
+    "Howard",
+    "ISU",
+    "Kansas Jayhawks",
+    "Kings Point",
+    "LIM",
+    "Luther Norse",
+    "MEC",
+    "Mac Campus",
+    "Mean Grean",
+    "Miami",
+    "Mines",
+    "Mount Saint Mary's",
+    "NEC",
+    "NSU",
+    "OCC",
+    "Old Dominion",
+    "Ole Miss",
+    "Orange County",
+    "PNW",
+    "Penn",
+    "Pitt",
+    "Purple Aces",
+    "RUM",
+    "Reed",
+    "Rice",
+    "SAC",
+    "SBC",
+    "SHU",
+    "SPU",
+    "STATE",
+    "SU",
+    "Saint John's",
+    "Salt Lake Griffins",
+    "Smith",
+    "Southern Seminary",
+    "State",
+    "Stephen F",
+    "TROY",
+    "TSU",
+    "Tech",
+    "Temple",
+    "The U",
+    "Trinity",
+    "U of M",
+    "UA",
+    "UC",
+    "UJ Jimmies",
+    "UM",
+    "UNE",
+    "UNO",
+    "UO Comets",
+    "USD",
+    "USF",
+    "UT",
+    "UW",
+    "Union",
+    "Utah Griffins",
+    "WCU",
+    "WSU"
+  ],
+  "Massachusetts Institute of Technology": [
+    "MIT"
+  ],
+  "California Institute of Technology": [
+    "Caltech",
+    "CalTech"
+  ],
+  "Stanford University": [
+    "Stanford"
+  ],
+  "Harvard University": [
+    "Harvard",
+    "Harvard College"
+  ],
+  "Yale University": [
+    "Yale",
+    "Yale College"
+  ],
+  "Princeton University": [
+    "Princeton"
+  ],
+  "Columbia University in the City of New York": [
+    "Columbia University",
+    "Columbia College"
+  ],
+  "University of Pennsylvania": [
+    "UPenn",
+    "Penn (University of Pennsylvania)"
+  ],
+  "Cornell University": [
+    "Cornell"
+  ],
+  "Dartmouth College": [
+    "Dartmouth"
+  ],
+  "Northwestern University": [
+    "Northwestern"
+  ],
+  "University of Chicago": [
+    "UChicago"
+  ],
+  "Johns Hopkins University": [
+    "Johns Hopkins",
+    "JHU"
+  ],
+  "Carnegie Mellon University": [
+    "Carnegie Mellon",
+    "CMU"
+  ],
+  "Georgia Institute of Technology-Main Campus": [
+    "Georgia Tech",
+    "Georgia Institute of Technology"
+  ],
+  "University of Michigan-Ann Arbor": [
+    "University of Michigan",
+    "UMich",
+    "Michigan (Ann Arbor)"
+  ],
+  "University of Illinois Urbana-Champaign": [
+    "UIUC",
+    "University of Illinois at Urbana-Champaign"
+  ],
+  "The University of Texas at Austin": [
+    "UT Austin",
+    "University of Texas at Austin"
+  ],
+  "University of Washington-Seattle Campus": [
+    "University of Washington",
+    "UW Seattle"
+  ],
+  "University of Wisconsin-Madison": [
+    "UW-Madison",
+    "UW Madison"
+  ],
+  "New York University": [
+    "NYU"
+  ],
+  "University of Southern California": [
+    "USC (University of Southern California)"
+  ],
+  "Vanderbilt University": [
+    "Vanderbilt"
+  ],
+  "University of Notre Dame": [
+    "Notre Dame"
+  ],
+  "Georgetown University": [
+    "Georgetown"
+  ],
+  "Washington University in St Louis": [
+    "WashU",
+    "Washington University in St. Louis"
+  ],
+  "Boston University": [
+    "BU (Boston University)"
+  ],
+  "Tufts University": [
+    "Tufts"
+  ],
+  "Purdue University-Main Campus": [
+    "Purdue",
+    "Purdue University"
+  ],
+  "Ohio State University-Main Campus": [
+    "Ohio State",
+    "Ohio State University",
+    "The Ohio State University"
+  ],
+  "Pennsylvania State University-Main Campus": [
+    "Penn State",
+    "Pennsylvania State University"
+  ],
+  "University of Florida": [
+    "UF (University of Florida)"
+  ],
+  "University of North Carolina at Chapel Hill": [
+    "UNC Chapel Hill",
+    "UNC-Chapel Hill",
+    "UNC"
+  ],
+  "University of Virginia-Main Campus": [
+    "University of Virginia",
+    "UVA"
+  ],
+  "Virginia Polytechnic Institute and State University": [
+    "Virginia Tech"
+  ],
+  "University of Maryland-College Park": [
+    "University of Maryland",
+    "UMD"
+  ],
+  "Rutgers University-New Brunswick": [
+    "Rutgers",
+    "Rutgers University"
+  ],
+  "Arizona State University Campus Immersion": [
+    "Arizona State University",
+    "Arizona State",
+    "ASU"
+  ],
+  "University of Minnesota-Twin Cities": [
+    "University of Minnesota"
+  ],
+  "University of Colorado Boulder": [
+    "CU Boulder"
+  ],
+  "Brigham Young University": [
+    "BYU"
+  ],
+  "Northeastern University": [
+    "Northeastern"
+  ],
+  "Case Western Reserve University": [
+    "Case Western"
+  ],
+  "Lehigh University": [
+    "Lehigh"
+  ],
+  "Rensselaer Polytechnic Institute": [
+    "RPI"
+  ],
+  "Worcester Polytechnic Institute": [
+    "WPI"
+  ],
+  "Wake Forest University": [
+    "Wake Forest"
+  ],
+  "Tulane University of Louisiana": [
+    "Tulane",
+    "Tulane University"
+  ],
+  "University of Illinois Chicago": [
+    "UIC"
+  ],
+  "Stony Brook University": [
+    "SUNY Stony Brook"
+  ],
+  "Michigan State University": [
+    "Michigan State"
+  ],
+  "Indiana University-Bloomington": [
+    "Indiana University"
+  ],
+  "Southern Methodist University": [
+    "SMU"
+  ],
+  "University of Georgia": [
+    "UGA"
+  ],
+  "Florida State University": [
+    "FSU"
+  ],
+  "Villanova University": [
+    "Villanova"
+  ],
+  "University of California-Berkeley": [
+    "UC Berkeley",
+    "Berkeley",
+    "UCB"
+  ],
+  "University of California-Los Angeles": [
+    "UCLA"
+  ],
+  "University of California-San Diego": [
+    "UC San Diego",
+    "UCSD"
+  ],
+  "University of California-Davis": [
+    "UC Davis"
+  ],
+  "University of California-Irvine": [
+    "UC Irvine",
+    "UCI"
+  ],
+  "University of California-Santa Barbara": [
+    "UC Santa Barbara",
+    "UCSB"
+  ],
+  "University of California-Santa Cruz": [
+    "UC Santa Cruz",
+    "UCSC"
+  ],
+  "University of California-Riverside": [
+    "UC Riverside",
+    "UCR"
+  ],
+  "University of California-Merced": [
+    "UC Merced"
+  ],
+  "United States Military Academy": [
+    "West Point"
+  ],
+  "United States Naval Academy": [
+    "Naval Academy"
+  ],
+  "United States Air Force Academy": [
+    "Air Force Academy"
+  ],
+  "The University of Texas at Dallas": [
+    "UT Dallas",
+    "UTD"
+  ],
+  "University of Massachusetts-Amherst": [
+    "UMass Amherst"
+  ],
+  "University of Pittsburgh-Pittsburgh Campus": [
+    "University of Pittsburgh"
+  ],
+  "University of Connecticut": [
+    "UConn"
+  ],
+  "Fordham University": [
+    "Fordham"
+  ],
+  "Loyola Marymount University": [
+    "LMU"
+  ],
+  "George Washington University": [
+    "GWU"
+  ],
+  "Syracuse University": [
+    "Syracuse"
+  ],
+  "Clemson University": [
+    "Clemson"
+  ],
+  "Louisiana State University and Agricultural & Mechanical College": [
+    "LSU",
+    "Louisiana State University"
+  ],
+  "Oklahoma State University-Main Campus": [
+    "Oklahoma State University"
+  ],
+  "University of South Carolina-Columbia": [
+    "University of South Carolina"
+  ],
+  "Rochester Institute of Technology": [
+    "RIT"
+  ],
+  "Illinois Institute of Technology": [
+    "Illinois Tech"
+  ],
+  "Virginia Commonwealth University": [
+    "VCU"
+  ],
+  "James Madison University": [
+    "JMU"
+  ],
+  "William & Mary": [
+    "College of William and Mary",
+    "William and Mary"
+  ],
+  "University of Cincinnati-Main Campus": [
+    "University of Cincinnati"
+  ],
+  "Ohio University-Main Campus": [
+    "Ohio University"
+  ],
+  "Miami University-Oxford": [
+    "Miami University"
+  ],
+  "Marquette University": [
+    "Marquette"
+  ],
+  "DePaul University": [
+    "DePaul"
+  ],
+  "Gonzaga University": [
+    "Gonzaga"
+  ],
+  "University of Nevada-Las Vegas": [
+    "UNLV"
+  ],
+  "San Diego State University": [
+    "SDSU"
+  ],
+  "San Jose State University": [
+    "SJSU"
+  ],
+  "California Polytechnic State University-San Luis Obispo": [
+    "Cal Poly",
+    "Cal Poly SLO",
+    "Cal Poly San Luis Obispo",
+    "Cal Poly, San Luis Obispo"
+  ],
+  "California State Polytechnic University-Pomona": [
+    "Cal Poly Pomona"
+  ],
+  "Texas Tech University": [
+    "Texas Tech"
+  ],
+  "Brandeis University": [
+    "Brandeis"
+  ],
+  "Washington and Lee University": [
+    "Washington & Lee"
+  ],
+  "Harvey Mudd College": [
+    "Harvey Mudd"
+  ],
+  "Claremont McKenna College": [
+    "Claremont McKenna"
+  ],
+  "Swarthmore College": [
+    "Swarthmore"
+  ],
+  "Amherst College": [
+    "Amherst"
+  ],
+  "Williams College": [
+    "Williams (college)"
+  ],
+  "Pomona College": [
+    "Pomona (college)"
+  ],
+  "Wellesley College": [
+    "Wellesley"
+  ],
+  "Bowdoin College": [
+    "Bowdoin"
+  ],
+  "Middlebury College": [
+    "Middlebury"
+  ],
+  "Vassar College": [
+    "Vassar"
+  ],
+  "Wesleyan University": [
+    "Wesleyan"
+  ],
+  "Barnard College": [
+    "Barnard"
+  ],
+  "Haverford College": [
+    "Haverford"
+  ],
+  "Carleton College": [
+    "Carleton"
+  ],
+  "Grinnell College": [
+    "Grinnell"
+  ],
+  "Colgate University": [
+    "Colgate"
+  ],
+  "Oberlin College": [
+    "Oberlin"
+  ],
+  "Macalester College": [
+    "Macalester"
+  ],
+  "Babson College": [
+    "Babson"
+  ],
+  "Bucknell University": [
+    "Bucknell"
+  ],
+  "Emerson College": [
+    "Emerson"
+  ],
+  "Spelman College": [
+    "Spelman"
+  ],
+  "Morehouse College": [
+    "Morehouse"
+  ],
+  "Drexel University": [
+    "Drexel"
+  ],
+  "University of Rochester": [
+    "Rochester (university)"
+  ],
+  "Emory University": [
+    "Emory"
+  ],
+  "Texas A&M University-College Station": [
+    "Texas A&M",
+    "Texas A&M University"
+  ],
+  "The Cooper Union for the Advancement of Science and Art": [
+    "Cooper Union",
+    "Cooper Union for the Advancement of Science and Art"
+  ],
+  "The University of Tennessee-Knoxville": [
+    "University of Tennessee"
+  ],
+  "Franklin and Marshall College": [
+    "Franklin & Marshall College",
+    "Franklin & Marshall",
+    "F&M"
+  ],
+  "The University of the South": [
+    "Sewanee",
+    "Sewanee: The University of the South"
+  ]
+}

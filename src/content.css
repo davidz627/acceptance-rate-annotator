@@ -1,0 +1,18 @@
+.car-badge {
+  display: inline-block;
+  margin-left: 0.25em;
+  padding: 0 0.4em;
+  border-radius: 999px;
+  font: 600 0.72em/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  vertical-align: baseline;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: #6b7280;
+  cursor: help;
+  user-select: none;
+}
+.car-badge-t1 { background: #b91c1c; }  /* < 10% */
+.car-badge-t2 { background: #c2410c; }  /* 10–25% */
+.car-badge-t3 { background: #a16207; }  /* 25–50% */
+.car-badge-t4 { background: #15803d; }  /* >= 50% */

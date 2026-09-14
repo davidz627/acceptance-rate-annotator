@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 12px 14px; width: 240px; color: #111; }
+    h1 { font-size: 14px; margin: 0 0 8px; }
+    label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .meta { color: #666; font-size: 11px; margin-top: 10px; }
+    .legend { margin-top: 8px; display: flex; gap: 4px; flex-wrap: wrap; }
+    .pill { color: #fff; border-radius: 999px; padding: 0 6px; font-size: 11px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Acceptance Rate Annotator</h1>
+  <label><input type="checkbox" id="enabled"> Annotate college names</label>
+  <div class="legend">
+    <span class="pill" style="background:#b91c1c">&lt;10%</span>
+    <span class="pill" style="background:#c2410c">10–25%</span>
+    <span class="pill" style="background:#a16207">25–50%</span>
+    <span class="pill" style="background:#15803d">50%+</span>
+  </div>
+  <div class="meta" id="meta"></div>
+  <script src="../data/colleges.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

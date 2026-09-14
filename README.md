@@ -50,3 +50,11 @@ data/aliases.json      curated aliases + blocklist
 scripts/build-data.mjs regenerates data/colleges.js from the Scorecard CSV
 scripts/make-icons.mjs regenerates the placeholder icons
 ```
+
+## Privacy
+
+The extension reads page text locally to find college names and inserts badge elements. It makes no network requests, collects no browsing data, and stores only the on/off toggle in `chrome.storage.sync`.
+
+## Publishing
+
+See [`docs/store-listing.md`](docs/store-listing.md). Build the upload zip with `scripts/package.sh`.

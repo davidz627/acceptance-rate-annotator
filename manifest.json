@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Acceptance Rate Annotator",
   "version": "1.0.0",
-  "description": "Appends the admission rate next to every U.S. college or university name on any page. Data: U.S. Dept. of Education College Scorecard.",
+  "description": "Shows the admission rate next to every U.S. college or university name on any web page. Data from the College Scorecard.",
   "permissions": [
     "storage"
   ],

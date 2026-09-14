@@ -83,13 +83,17 @@ for (const r of rows.slice(1)) {
     const words = t.split(" ");
     const isPhrase = words.length >= 2 && words.every((w) => w.length >= 2) && /^[A-Z]/.test(t) &&
       !/\b(of|the|at|and|in|Univ|University|College)$/i.test(t) && !/^(University|College|Univ|The) /i.test(t);
+    // Drop fragments of the school's own name that don't start it ("New Brunswick", "Main Campus",
+    // "College Station" come from comma-splitting "Rutgers, New Brunswick" etc.). Prefixes like
+    // "Florida State" or "Rutgers University" are fine.
+    const plainName = name.replace(/-/g, " ");
+    const idx = plainName.indexOf(t);
+    if (idx > 0) continue;
     if (isAcronym || isPhrase) aliases.add(t);
   }
-  // "University of California-Berkeley" is also written with ", " or " " or " - "
+  // "University of California-Berkeley" is also written with ", ", " ", " - ", or en/em dashes
   if (name.includes("-")) {
-    aliases.add(name.replace(/-/g, ", "));
-    aliases.add(name.replace(/-/g, " "));
-    aliases.add(name.replace(/-/g, " - "));
+    for (const sep of [", ", " ", " - ", "\u2013", " \u2013 ", "\u2014", " \u2014 "]) aliases.add(name.replace(/-/g, sep));
   }
   for (const a of overrides[name] || []) aliases.add(a);
   schools.push({

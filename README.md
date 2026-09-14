@@ -1,5 +1,7 @@
 # Acceptance Rate Annotator
 
+> **Heads up:** this is a vibe-coded personal tool, built with Claude Code in an afternoon. No guarantees of accuracy, maintenance, or support. Admission rates come straight from the College Scorecard dataset and may be stale or wrong for any given school. Use at your own risk.
+
 Personal Chrome extension. Whenever a U.S. college or university name appears on a page, it appends a small badge with that school's admission rate:
 
 > She got into Stanford University <kbd>3.6%</kbd> and UC Berkeley <kbd>11%</kbd> but chose Cal Poly <kbd>29%</kbd>.
@@ -53,7 +55,7 @@ scripts/make-icons.mjs regenerates the placeholder icons
 
 ## Privacy
 
-The extension reads page text locally to find college names and inserts badge elements. It makes no network requests, collects no browsing data, and stores only the on/off toggle in `chrome.storage.sync`.
+See [PRIVACY.md](PRIVACY.md). Short version: everything runs locally, nothing is collected or sent anywhere.
 
 ## Publishing
 

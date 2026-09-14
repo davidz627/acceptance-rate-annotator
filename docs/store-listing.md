@@ -38,8 +38,8 @@ Annotate college and university names on web pages with their admission rate.
 - Not using data for purposes unrelated to the single purpose
 - Not using data to determine creditworthiness or for lending
 
-**Privacy policy URL:** not required when no user data is collected, but if the form insists, point at the README:
-https://github.com/davidz627/acceptance-rate-annotator#privacy
+**Privacy policy URL:** (repo is public so this URL resolves):
+https://github.com/davidz627/acceptance-rate-annotator/blob/main/PRIVACY.md
 
 ## Distribution
 

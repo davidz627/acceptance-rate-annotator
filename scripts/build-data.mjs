@@ -95,6 +95,9 @@ for (const r of rows.slice(1)) {
   if (name.includes("-")) {
     for (const sep of [", ", " ", " - ", "\u2013", " \u2013 ", "\u2014", " \u2014 "]) aliases.add(name.replace(/-/g, sep));
   }
+  // "Pennsylvania State University-Penn State Harrisburg" -> "Penn State Harrisburg"
+  const psu = /^Pennsylvania State University-Penn State (.+)$/.exec(name);
+  if (psu) aliases.add(`Penn State ${psu[1]}`);
   for (const a of overrides[name] || []) aliases.add(a);
   schools.push({
     id: Number(r[col.UNITID]),

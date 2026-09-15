@@ -1,12 +1,15 @@
 {
   "_comment": "Keys are exact College Scorecard INSTNM values; values are extra strings the content script should treat as that school (case-sensitive). Scorecard's own ALIAS field is only used for ALL-CAPS acronyms and multi-word phrases; single-word aliases must be listed here. _blocklist suppresses Scorecard aliases that are too ambiguous.",
   "_blocklist": [
+    "AIC",
     "AMU",
     "AUM",
+    "BAC",
     "Baylor",
     "Big Green",
     "Big Red",
     "Brown",
+    "CCS",
     "CIA",
     "CSI",
     "CSU",
@@ -30,13 +33,16 @@
     "Golden Buffs",
     "HILLTOPPERS",
     "Hilltoppers",
+    "Holy Family",
     "Howard",
+    "IIT",
     "ISU",
     "Kansas Jayhawks",
     "Kings Point",
     "LIM",
     "Luther Norse",
     "MEC",
+    "MTU",
     "Mac Campus",
     "Mean Grean",
     "Miami",
@@ -44,11 +50,14 @@
     "Mount Saint Mary's",
     "NEC",
     "NSU",
+    "North Central",
     "OCC",
+    "OSU",
     "Old Dominion",
     "Ole Miss",
     "Orange County",
     "PNW",
+    "PTZ",
     "Penn",
     "Pitt",
     "Purple Aces",
@@ -79,11 +88,14 @@
     "UJ Jimmies",
     "UM",
     "UNE",
+    "UNK",
     "UNO",
     "UO Comets",
+    "URI",
     "USD",
     "USF",
     "UT",
+    "UTC",
     "UW",
     "Union",
     "Utah Griffins",
@@ -200,7 +212,8 @@
   ],
   "Pennsylvania State University-Main Campus": [
     "Penn State",
-    "Pennsylvania State University"
+    "Pennsylvania State University",
+    "PSU"
   ],
   "University of Florida": [
     "UF (University of Florida)"
@@ -419,7 +432,8 @@
     "Cal Poly Pomona"
   ],
   "Texas Tech University": [
-    "Texas Tech"
+    "Texas Tech",
+    "TTU"
   ],
   "Brandeis University": [
     "Brandeis"
@@ -537,5 +551,9 @@
   "CUNY John Jay College of Criminal Justice": [
     "John Jay College of Criminal Justice",
     "John Jay College"
+  ],
+  "University of New Hampshire-Main Campus": [
+    "UNH",
+    "University of New Hampshire"
   ]
 }

@@ -2,6 +2,7 @@
   "_comment": "Keys are exact College Scorecard INSTNM values; values are extra strings the content script should treat as that school (case-sensitive). Scorecard's own ALIAS field is only used for ALL-CAPS acronyms and multi-word phrases; single-word aliases must be listed here. _blocklist suppresses Scorecard aliases that are too ambiguous.",
   "_blocklist": [
     "AMU",
+    "AUM",
     "Baylor",
     "Big Green",
     "Big Red",

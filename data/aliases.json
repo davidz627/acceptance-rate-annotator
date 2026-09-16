@@ -6,6 +6,7 @@
     "AUM",
     "BAC",
     "Baylor",
+    "Berkeley",
     "Big Green",
     "Big Red",
     "Brandeis",
@@ -112,6 +113,7 @@
     "UW",
     "UWB",
     "WCU",
+    "Wellesley",
     "WSU"
   ],
   "Massachusetts Institute of Technology": [
@@ -313,8 +315,11 @@
   ],
   "University of California-Berkeley": [
     "UC Berkeley",
-    "Berkeley",
-    "UCB"
+    "UCB",
+    "UC-Berkeley",
+    "U.C. Berkeley",
+    "Cal Berkeley",
+    "University of California @ Berkeley"
   ],
   "University of California-Los Angeles": [
     "UCLA"
@@ -472,9 +477,7 @@
   "Pomona College": [
     "Pomona (college)"
   ],
-  "Wellesley College": [
-    "Wellesley"
-  ],
+  "Wellesley College": [],
   "Bowdoin College": [
     "Bowdoin"
   ],
@@ -604,13 +607,19 @@
   "_notFollowedBy": {
     "_comment": "alias -> words that, if they immediately follow the match, cancel it (a different institution or a non-school meaning)",
     "Purdue": [
-      "Pharma"
+      "Pharma",
+      "Avenue",
+      "Pegboard"
     ],
     "Yale": [
       "lock",
       "locks",
       "Lock",
-      "Locks"
+      "Locks",
+      "Street",
+      "Strom",
+      "Bologna",
+      "Primary"
     ],
     "Trinity College": [
       "Dublin",
@@ -676,6 +685,97 @@
     "Colorado State University": [
       "System",
       "Global"
+    ],
+    "Lehigh": [
+      "Valley",
+      "County",
+      "River",
+      "Avenue",
+      "Street",
+      "Gas",
+      "Coal",
+      "Canal",
+      "Gap"
+    ],
+    "Northwestern": [
+      "State",
+      "Railroad",
+      "Railway",
+      "Mutual",
+      "Media",
+      "Turnpike",
+      "Human",
+      "Pioneer",
+      "Dispensary",
+      "Life"
+    ],
+    "Georgetown": [
+      "Prep",
+      "Preparatory",
+      "Day",
+      "Masters",
+      "Raiders",
+      "Loop",
+      "District",
+      "County",
+      "Pike",
+      "Road",
+      "Collegians",
+      "Classical"
+    ],
+    "Fordham": [
+      "Road",
+      "Plaza",
+      "Brewing",
+      "Village",
+      "North",
+      "station"
+    ],
+    "Princeton": [
+      "Theological",
+      "Architectural",
+      "Review",
+      "Junction",
+      "Cemetery",
+      "Medical",
+      "Field"
+    ],
+    "Syracuse": [
+      "Crunch",
+      "Stars",
+      "Mile",
+      "Herald",
+      "Convention",
+      "Inner",
+      "Pros"
+    ],
+    "Marquette": [
+      "County",
+      "Avenue",
+      "Park",
+      "Stadium",
+      "Gymnasium",
+      "Club"
+    ],
+    "Clemson": [
+      "Elementary",
+      "Insider"
+    ],
+    "Stanford": [
+      "White",
+      "Tree"
+    ],
+    "Tufts": [
+      "Cove"
+    ],
+    "Cornell": [
+      "Woolrich",
+      "Capa",
+      "Dupree"
+    ],
+    "Rutgers": [
+      "Street",
+      "Nisso"
     ]
   }
 }

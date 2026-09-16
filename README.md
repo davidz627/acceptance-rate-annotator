@@ -45,8 +45,10 @@ and prints the ambiguous matches and the institution-like phrases it missed. Rea
 - Rates are the overall first-time undergraduate rate; no per-major or early-decision breakdown.
 - Doesn't annotate inside editable fields, code blocks, or `<pre>`.
 - Acronym aliases (`MIT`, `WIT`, `SWT`) are skipped inside ALL-CAPS text, where they're usually just words.
-- Short forms (`Cornell`, `Berkeley`, `Penn State`) are skipped when another capitalised word precedes them
-  (`Chris Cornell`, `Lawrence Berkeley National Laboratory`, `North Dakota State`).
+- Short forms (`Cornell`, `Princeton`, `Penn State`) are skipped when another capitalised word precedes them
+  (`Chris Cornell`, `North Dakota State`), when a colon follows (`Princeton: Princeton University Press`), or when
+  `, <state>` follows in a locative context (`born in Princeton, New Jersey`).
+- Bare `Berkeley` and `Wellesley` are not aliases: sampled across Wikipedia, only ~5% of bare uses meant the school.
 - `_notFollowedBy` in `data/aliases.json` cancels a match when a specific word follows it (`Purdue Pharma`,
   `Trinity College Dublin`).
 - Names shared by several unrelated schools (`Bethel University`, `Westminster College`) are never matched.

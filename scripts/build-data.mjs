@@ -107,9 +107,9 @@ for (const r of rows.slice(1)) {
     if (idx > 0) continue;
     if (isAcronym || isPhrase) aliases.add(t);
   }
-  // "University of California-Berkeley" is also written with ", ", " ", " - ", or en/em dashes
+  // "University of California-Berkeley" is also written with ", ", " ", " - ", " at ", or en/em dashes
   if (name.includes("-")) {
-    for (const sep of [", ", " ", " - ", "\u2013", " \u2013 ", "\u2014", " \u2014 "]) aliases.add(name.replace(/-/g, sep));
+    for (const sep of [", ", " ", " - ", " at ", "\u2013", " \u2013 ", "\u2014", " \u2014 "]) aliases.add(name.replace(/-/g, sep));
   }
   // "Pennsylvania State University-Penn State Harrisburg" -> "Penn State Harrisburg"
   const psu = /^Pennsylvania State University-Penn State (.+)$/.exec(name);

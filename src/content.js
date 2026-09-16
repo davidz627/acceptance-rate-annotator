@@ -68,6 +68,27 @@
     if (prev.endsWith(".")) return TITLE_OR_INITIAL.test(prev); // "Awards. Cornell" is a sentence start; "Mr. Cornell" is a person
     return true;
   }
+  // A short form followed by a colon is a place in a bibliography ("Berkeley: University of
+  // California Press"). One followed by ", <state>" is the town ("Princeton, New Jersey"),
+  // but only when the surrounding text reads as a location, so a list like
+  // "Purdue, Indiana and Ohio State" still matches: postal/dotted abbreviations always count;
+  // full state names count when preceded by a locative word or followed by end punctuation.
+  const STATE_ABBR = "AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY|DC|" +
+    "Calif|Mass|Conn|Penn|Wis|Mich|Ill|Ind|Tex|Fla|Ky|Tenn|Ga|Va|Wash|Ore|Colo|Ariz|Minn|Md|Del|Vt|Okla|Kan|Neb|Ala|Miss|La|Okla|N\\.[A-Z]\\.|S\\.[A-Z]\\.|W\\.Va\\.|D\\.C\\.";
+  const STATE_NAME = "Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|Kansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming|District of Columbia|" +
+    "Guyana|British Guiana|England|Scotland|Wales|Ireland|Canada|Ontario|Quebec|Nova Scotia|Prince Edward Island|Australia|New Zealand|Jamaica|United States|USA|U\\.S\\.";
+  const STATE_AFTER = new RegExp(`^,[ \\u00a0]*(?:(${STATE_ABBR})|(${STATE_NAME}))(?![A-Za-z])`);
+  const LOCATIVE_BEFORE = /\b(?:in|at|from|to|near|of|into|around|outside|born|died|lives|lived|based|located|moved|settled|headquartered)[ \u00a0]+$/i;
+  function followedByPlaceMarker(text, start, end) {
+    const after = text.slice(end, end + 60);
+    if (/^[ \u00a0]*:/.test(after)) return true;
+    const m = STATE_AFTER.exec(after);
+    if (!m) return false;
+    if (m[1]) return true; // abbreviation
+    const rest = after.slice(m[0].length);
+    if (rest === "" || /^[ \u00a0]*[:.;)\]]/.test(rest)) return true;
+    return LOCATIVE_BEFORE.test(text.slice(Math.max(0, start - 20), start));
+  }
   const NEXT_WORD = /^[ \u00a0]*,?[ \u00a0]*([A-Za-z&][A-Za-z'\u2019.&-]*)/;
   function vetoed(alias, text, end) {
     const words = VETO[alias];
@@ -108,7 +129,7 @@
         const end = start + c.text.length;
         if (end < text.length && WORD_CHAR.test(text[end])) continue; // e.g. "MITs"
         if (vetoed(c.text, text, end)) continue;
-        if (c.short && precededByName(text, start)) continue;
+        if (c.short && (precededByName(text, start) || followedByPlaceMarker(text, start, end))) continue;
         out.push({ start, end, school: c.school });
         re.lastIndex = end; // don't re-match inside this span
         break;

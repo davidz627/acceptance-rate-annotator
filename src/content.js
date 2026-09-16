@@ -20,7 +20,7 @@
   const index = new Map();
   const dedupe = new Map(); // string -> school (prefer larger school on collision)
   for (const school of DATA.schools) {
-    for (const s of [school.name, ...(school.aliases || [])]) {
+    for (const s of [school.nomatch ? null : school.name, ...(school.aliases || [])]) {
       if (!s) continue;
       const prev = dedupe.get(s);
       if (!prev || (school.size || 0) > (prev.size || 0)) dedupe.set(s, school);
@@ -30,9 +30,51 @@
     const first = firstToken(text);
     if (!first) continue;
     if (!index.has(first)) index.set(first, []);
-    index.get(first).push({ text, school });
+    index.get(first).push({ text, school, short: isShortForm(text) });
   }
   for (const list of index.values()) list.sort((a, b) => b.text.length - a.text.length);
+
+  // Words that, when they directly follow an alias, cancel the match ("Purdue Pharma",
+  // "Trinity College Dublin"). Built from _notFollowedBy in data/aliases.json.
+  const VETO = DATA.veto || {};
+
+  // Short forms are single words or nicknames ("Cornell", "Penn State", "Georgia Tech") as
+  // opposed to full names containing University/College/etc. A short form preceded by another
+  // capitalised word is usually part of a person or place name ("Chris Cornell",
+  // "Lawrence Berkeley", "North Dakota State"), so it is skipped. Capitalised function words
+  // and sentence starters are exempt so "Both Penn State and ..." still matches.
+  function isShortForm(s) {
+    return /[a-z]/.test(s) && !/\b(University|College|Institute|School|Academy|Polytechnic|Seminary|Conservatory)\b/.test(s);
+  }
+  const PREV_OK = new Set(("The A An At In On Of And Or To For With From By As But Is Was Are Were Both Between Including " +
+    "Like Unlike Near Nearby Its His Her Their Our Your This That These Those Then Than If So Not No Yes Also Only Even Just " +
+    "Where When While After Before Since Until Because Although Though However Meanwhile Later Earlier Here There Now Today " +
+    "Former Formerly Current Currently Rival Rivals Versus Vs Many Most Some Several All Each Every Another Other Others Two " +
+    "Three Four Five Six Seven Eight Nine Ten Given Eventually Following Among Thus What Which Who Whose Why How Whether " +
+    "Neither Either Despite Without Within Through Under Over Against Beyond Across Around About Per Via Instead Perhaps Yet " +
+    "Still Once Again Often Sometimes Usually Rarely Never Always Already Finally Recently Historically Originally Traditionally " +
+    "Similarly Likewise Consequently Therefore Hence Nevertheless Nonetheless Otherwise Moreover Furthermore Additionally Overall " +
+    "Indeed Notably Especially Particularly Specifically Generally Typically Mostly Largely Nearly Almost Previously Subsequently " +
+    "Ultimately Initially First Second Third Last Next Notable Visit Visiting Attend Attending Attended Entering Enter Join Joined " +
+    "Joining Leaving Left Beat Beating Defeated Defeating Host Hosting Hosted Meet Meets Facing Faces Play Plays Playing Welcome " +
+    "Congratulations Go Support Inside Outside Top Best Elite Prestigious Nearby Local Public Private Historic Historically").split(" "));
+  const PREV_WORD = /(?:^|[^A-Za-z0-9'\u2019.-])([A-Z][A-Za-z'\u2019.-]*)[ \u00a0]+$/;
+  const TITLE_OR_INITIAL = /^(?:Mr|Mrs|Ms|Dr|St|Jr|Sr|Prof|Gen|Sen|Rep|Gov|Rev|Fr|[A-Z])\.$/;
+  function precededByName(text, start) {
+    const m = PREV_WORD.exec(text.slice(Math.max(0, start - 40), start));
+    if (!m) return false;
+    const prev = m[1];
+    if (PREV_OK.has(prev)) return false;
+    if (prev.endsWith(".")) return TITLE_OR_INITIAL.test(prev); // "Awards. Cornell" is a sentence start; "Mr. Cornell" is a person
+    return true;
+  }
+  const NEXT_WORD = /^[ \u00a0]*,?[ \u00a0]*([A-Za-z&][A-Za-z'\u2019.&-]*)/;
+  function vetoed(alias, text, end) {
+    const words = VETO[alias];
+    if (!words) return false;
+    const m = NEXT_WORD.exec(text.slice(end, end + 40));
+    return !!m && words.includes(m[1]);
+  }
 
   function firstToken(s) {
     const m = /^[A-Za-z0-9&]+/.exec(s);
@@ -40,9 +82,20 @@
   }
 
   // ---------- Matching ----------
+  // In ALL-CAPS text ("THE WIT OF OSCAR WILDE", "SWT" in religious texts) acronym aliases
+  // like WIT/MIT/SWT are far more likely to be ordinary words, so skip them there.
+  function isShouting(text) {
+    let upper = 0, lower = 0;
+    for (const ch of text) {
+      if (ch >= "A" && ch <= "Z") upper++;
+      else if (ch >= "a" && ch <= "z") lower++;
+    }
+    return upper + lower >= 8 && upper / (upper + lower) > 0.8;
+  }
   function findMatches(text) {
     const out = [];
     const re = /[A-Za-z0-9&]+/g;
+    const shouting = isShouting(text);
     let m;
     while ((m = re.exec(text))) {
       const start = m.index;
@@ -50,9 +103,12 @@
       if (!cands) continue;
       if (start > 0 && WORD_CHAR.test(text[start - 1])) continue; // mid-word
       for (const c of cands) {
+        if (shouting && !/[a-z]/.test(c.text)) continue; // acronym in ALL-CAPS text
         if (!text.startsWith(c.text, start)) continue;
         const end = start + c.text.length;
         if (end < text.length && WORD_CHAR.test(text[end])) continue; // e.g. "MITs"
+        if (vetoed(c.text, text, end)) continue;
+        if (c.short && precededByName(text, start)) continue;
         out.push({ start, end, school: c.school });
         re.lastIndex = end; // don't re-match inside this span
         break;
@@ -66,16 +122,42 @@
     const pct = rate * 100;
     return (pct < 10 ? pct.toFixed(1) : Math.round(pct)) + "%";
   }
-  function tier(rate) {
-    if (rate < 0.1) return "t1";
-    if (rate < 0.25) return "t2";
-    if (rate < 0.5) return "t3";
-    return "t4";
+  // Badge colour: a piecewise OKLCH sweep from green at the lowest rate in the dataset
+  // to red at 50%; everything at or above 50% is the same red. Most of the range is
+  // spent below 25% so the most selective schools are distinguishable from each other.
+  // Lightness stays around 0.5-0.57 so white text remains readable throughout.
+  // Stops are [rate, L, C, H]; keep the popup legend gradient in sync.
+  const MIN_RATE = Math.min(...DATA.schools.map((s) => s.rate));
+  const COLOR_STOPS = [
+    [MIN_RATE, 0.50, 0.17, 152],
+    [0.08, 0.53, 0.17, 142],
+    [0.15, 0.56, 0.17, 110],
+    [0.25, 0.57, 0.17, 78],
+    [0.35, 0.56, 0.18, 55],
+    [0.5, 0.52, 0.21, 27],
+  ];
+  function badgeColor(rate) {
+    let v = COLOR_STOPS[COLOR_STOPS.length - 1].slice(1);
+    if (rate <= COLOR_STOPS[0][0]) v = COLOR_STOPS[0].slice(1);
+    else {
+      for (let i = 1; i < COLOR_STOPS.length; i++) {
+        const a = COLOR_STOPS[i - 1], b = COLOR_STOPS[i];
+        if (rate <= b[0]) {
+          const t = (rate - a[0]) / (b[0] - a[0]);
+          v = [1, 2, 3].map((k) => a[k] + t * (b[k] - a[k]));
+          break;
+        }
+      }
+    }
+    return `oklch(${v[0].toFixed(3)} ${v[1].toFixed(3)} ${v[2].toFixed(1)})`;
   }
   function makeBadge(school) {
     const b = document.createElement("span");
-    b.className = `${BADGE_CLASS} ${BADGE_CLASS}-${tier(school.rate)}`;
+    b.className = BADGE_CLASS;
+    b.style.background = badgeColor(school.rate);
     b.textContent = formatRate(school.rate);
+    b.setAttribute("role", "img");
+    b.setAttribute("aria-label", `admission rate ${formatRate(school.rate)}`);
     b.title = `${school.name} (${school.city}, ${school.state})\nAdmission rate: ${(school.rate * 100).toFixed(1)}%\nSource: College Scorecard, data ${DATA.generated}`;
     return b;
   }

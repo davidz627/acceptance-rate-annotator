@@ -8,29 +8,33 @@
     "Baylor",
     "Big Green",
     "Big Red",
+    "Brandeis",
     "Brown",
+    "Cal",
+    "Camp Denidoo",
     "CCS",
+    "Central",
     "CIA",
+    "City Tech",
+    "Colgate",
+    "Colorado Seminary",
+    "Columbia",
     "CSI",
     "CSU",
     "CTX",
     "CULVER",
-    "Cal",
-    "Camp Denidoo",
-    "Central",
-    "City Tech",
-    "Colorado Seminary",
-    "Columbia",
     "D.C.",
     "DIT",
+    "Drexel",
     "Duke",
+    "Elon",
+    "Emerson",
+    "Emory",
     "EMU",
     "ESF",
-    "Elon",
-    "Emory",
     "Fighting Irish",
-    "GSU",
     "Golden Buffs",
+    "GSU",
     "HILLTOPPERS",
     "Hilltoppers",
     "Holy Family",
@@ -39,55 +43,63 @@
     "ISU",
     "Kansas Jayhawks",
     "Kings Point",
+    "KSC",
     "LIM",
     "Luther Norse",
-    "MEC",
-    "MTU",
     "Mac Campus",
     "Mean Grean",
+    "MEC",
     "Miami",
     "Mines",
     "Mount Saint Mary's",
+    "MTU",
     "NEC",
-    "NSU",
     "North Central",
+    "NSU",
     "OCC",
-    "OSU",
+    "OIT",
     "Old Dominion",
     "Ole Miss",
     "Orange County",
-    "PNW",
-    "PTZ",
+    "OSU",
     "Penn",
     "Pitt",
+    "PNW",
+    "PTZ",
     "Purple Aces",
-    "RUM",
     "Reed",
     "Rice",
+    "RMC",
+    "RPI",
+    "RUM",
     "SAC",
-    "SBC",
-    "SHU",
-    "SPU",
-    "STATE",
-    "SU",
     "Saint John's",
     "Salt Lake Griffins",
+    "SBC",
+    "SFA",
+    "SHU",
     "Smith",
     "Southern Seminary",
+    "SPU",
+    "St. Mary's",
+    "STATE",
     "State",
     "Stephen F",
-    "TROY",
-    "TSU",
+    "SU",
     "Tech",
     "Temple",
     "The U",
     "Trinity",
+    "TROY",
+    "TSU",
     "U of M",
     "UA",
     "UC",
+    "UCO",
     "UJ Jimmies",
     "UM",
     "UNE",
+    "Union",
     "UNK",
     "UNO",
     "UO Comets",
@@ -95,10 +107,10 @@
     "USD",
     "USF",
     "UT",
+    "Utah Griffins",
     "UTC",
     "UW",
-    "Union",
-    "Utah Griffins",
+    "UWB",
     "WCU",
     "WSU"
   ],
@@ -162,11 +174,13 @@
   ],
   "University of Illinois Urbana-Champaign": [
     "UIUC",
-    "University of Illinois at Urbana-Champaign"
+    "University of Illinois at Urbana-Champaign",
+    "University of Illinois"
   ],
   "The University of Texas at Austin": [
     "UT Austin",
-    "University of Texas at Austin"
+    "University of Texas at Austin",
+    "University of Texas"
   ],
   "University of Washington-Seattle Campus": [
     "University of Washington",
@@ -174,7 +188,8 @@
   ],
   "University of Wisconsin-Madison": [
     "UW-Madison",
-    "UW Madison"
+    "UW Madison",
+    "University of Wisconsin"
   ],
   "New York University": [
     "NYU"
@@ -193,7 +208,8 @@
   ],
   "Washington University in St Louis": [
     "WashU",
-    "Washington University in St. Louis"
+    "Washington University in St. Louis",
+    "Washington University"
   ],
   "Boston University": [
     "BU (Boston University)"
@@ -247,23 +263,20 @@
     "University of Minnesota"
   ],
   "University of Colorado Boulder": [
-    "CU Boulder"
+    "CU Boulder",
+    "University of Colorado"
   ],
   "Brigham Young University": [
     "BYU"
   ],
-  "Northeastern University": [
-    "Northeastern"
-  ],
+  "Northeastern University": [],
   "Case Western Reserve University": [
     "Case Western"
   ],
   "Lehigh University": [
     "Lehigh"
   ],
-  "Rensselaer Polytechnic Institute": [
-    "RPI"
-  ],
+  "Rensselaer Polytechnic Institute": [],
   "Worcester Polytechnic Institute": [
     "WPI"
   ],
@@ -346,7 +359,9 @@
     "UTD"
   ],
   "University of Massachusetts-Amherst": [
-    "UMass Amherst"
+    "UMass Amherst",
+    "University of Massachusetts",
+    "UMass"
   ],
   "University of Pittsburgh-Pittsburgh Campus": [
     "University of Pittsburgh"
@@ -435,9 +450,7 @@
     "Texas Tech",
     "TTU"
   ],
-  "Brandeis University": [
-    "Brandeis"
-  ],
+  "Brandeis University": [],
   "Washington and Lee University": [
     "Washington & Lee"
   ],
@@ -486,9 +499,7 @@
   "Grinnell College": [
     "Grinnell"
   ],
-  "Colgate University": [
-    "Colgate"
-  ],
+  "Colgate University": [],
   "Oberlin College": [
     "Oberlin"
   ],
@@ -501,18 +512,14 @@
   "Bucknell University": [
     "Bucknell"
   ],
-  "Emerson College": [
-    "Emerson"
-  ],
+  "Emerson College": [],
   "Spelman College": [
     "Spelman"
   ],
   "Morehouse College": [
     "Morehouse"
   ],
-  "Drexel University": [
-    "Drexel"
-  ],
+  "Drexel University": [],
   "University of Rochester": [
     "Rochester (university)"
   ],
@@ -555,5 +562,120 @@
   "University of New Hampshire-Main Campus": [
     "UNH",
     "University of New Hampshire"
-  ]
+  ],
+  "University of Nebraska-Lincoln": [
+    "University of Nebraska"
+  ],
+  "University of Missouri-Columbia": [
+    "University of Missouri"
+  ],
+  "University of Oklahoma-Norman Campus": [
+    "University of Oklahoma"
+  ],
+  "Colorado State University-Fort Collins": [
+    "Colorado State University"
+  ],
+  "St. John's University-New York": [
+    "St. John's University"
+  ],
+  "Emory & Henry University": [
+    "Emory & Henry College",
+    "Emory and Henry College",
+    "Emory and Henry University"
+  ],
+  "CUNY Hunter College": [
+    "Hunter College"
+  ],
+  "CUNY Bernard M Baruch College": [
+    "Baruch College"
+  ],
+  "CUNY Queens College": [
+    "Queens College"
+  ],
+  "CUNY Lehman College": [
+    "Lehman College"
+  ],
+  "CUNY Brooklyn College": [
+    "Brooklyn College"
+  ],
+  "CUNY Medgar Evers College": [
+    "Medgar Evers College"
+  ],
+  "_notFollowedBy": {
+    "_comment": "alias -> words that, if they immediately follow the match, cancel it (a different institution or a non-school meaning)",
+    "Purdue": [
+      "Pharma"
+    ],
+    "Yale": [
+      "lock",
+      "locks",
+      "Lock",
+      "Locks"
+    ],
+    "Trinity College": [
+      "Dublin",
+      "Cambridge",
+      "Oxford",
+      "London",
+      "Melbourne",
+      "Toronto",
+      "Bristol"
+    ],
+    "King's College": [
+      "London",
+      "Cambridge",
+      "Aberdeen"
+    ],
+    "Emory": [
+      "&",
+      "and"
+    ],
+    "Columbia College": [
+      "Hollywood"
+    ],
+    "Westminster College": [
+      "Oxford",
+      "London"
+    ],
+    "University of Colorado": [
+      "Denver",
+      "Colorado",
+      "Anschutz",
+      "System"
+    ],
+    "University of Nebraska": [
+      "Omaha",
+      "Kearney",
+      "Medical",
+      "System"
+    ],
+    "University of Wisconsin": [
+      "System"
+    ],
+    "University of Texas": [
+      "System",
+      "Medical",
+      "Southwestern",
+      "Health",
+      "MD"
+    ],
+    "University of Illinois": [
+      "System",
+      "Springfield"
+    ],
+    "University of Massachusetts": [
+      "System",
+      "Medical"
+    ],
+    "University of Missouri": [
+      "System"
+    ],
+    "University of Oklahoma": [
+      "Health"
+    ],
+    "Colorado State University": [
+      "System",
+      "Global"
+    ]
+  }
 }

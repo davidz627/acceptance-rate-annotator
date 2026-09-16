@@ -7,18 +7,21 @@
     h1 { font-size: 14px; margin: 0 0 8px; }
     label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
     .meta { color: #666; font-size: 11px; margin-top: 10px; }
-    .legend { margin-top: 8px; display: flex; gap: 4px; flex-wrap: wrap; }
-    .pill { color: #fff; border-radius: 999px; padding: 0 6px; font-size: 11px; font-weight: 600; }
+    /* Same stops as COLOR_STOPS in content.js, positioned as (rate - 2.6%) / (50% - 2.6%) */
+    .legend { margin-top: 10px; }
+    .bar { height: 10px; border-radius: 999px;
+      background: linear-gradient(to right in oklch,
+        oklch(0.50 0.17 152) 0%, oklch(0.53 0.17 142) 11.5%, oklch(0.56 0.17 110) 26%,
+        oklch(0.57 0.17 78) 47%, oklch(0.56 0.18 55) 68%, oklch(0.52 0.21 27) 100%); }
+    .ticks { display: flex; justify-content: space-between; font-size: 10px; color: #666; margin-top: 3px; }
   </style>
 </head>
 <body>
   <h1>Acceptance Rate Annotator</h1>
   <label><input type="checkbox" id="enabled"> Annotate college names</label>
-  <div class="legend">
-    <span class="pill" style="background:#15803d">&lt;10%</span>
-    <span class="pill" style="background:#a16207">10–25%</span>
-    <span class="pill" style="background:#c2410c">25–50%</span>
-    <span class="pill" style="background:#b91c1c">50%+</span>
+  <div class="legend" title="Admission rate: green = most selective, red = 50% or higher">
+    <div class="bar"></div>
+    <div class="ticks"><span id="min-rate">lowest</span><span>25%</span><span>50%+</span></div>
   </div>
   <div class="meta" id="meta"></div>
   <script src="../data/colleges.js"></script>

@@ -2,6 +2,7 @@
   "_comment": "Keys are exact College Scorecard INSTNM values; values are extra strings the content script should treat as that school (case-sensitive). Scorecard's own ALIAS field is only used for ALL-CAPS acronyms and multi-word phrases; single-word aliases must be listed here. _blocklist suppresses Scorecard aliases that are too ambiguous.",
   "_blocklist": [
     "AIC",
+    "Amherst",
     "AMU",
     "AUM",
     "BAC",
@@ -365,6 +366,9 @@
   ],
   "University of Massachusetts-Amherst": [
     "UMass Amherst",
+    "UMass-Amherst",
+    "UMass–Amherst",
+    "UM Amherst",
     "University of Massachusetts",
     "UMass"
   ],
@@ -467,9 +471,6 @@
   ],
   "Swarthmore College": [
     "Swarthmore"
-  ],
-  "Amherst College": [
-    "Amherst"
   ],
   "Williams College": [
     "Williams (college)"
@@ -776,6 +777,13 @@
     "Rutgers": [
       "Street",
       "Nisso"
+    ],
+    "MIT": [
+      "World",
+      "WPU",
+      "ADT",
+      "Manipal",
+      "Pune"
     ]
   }
 }

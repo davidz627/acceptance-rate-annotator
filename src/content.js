@@ -89,7 +89,7 @@
     if (rest === "" || /^[ \u00a0]*[:.;)\]]/.test(rest)) return true;
     return LOCATIVE_BEFORE.test(text.slice(Math.max(0, start - 20), start));
   }
-  const NEXT_WORD = /^[ \u00a0]*,?[ \u00a0]*([A-Za-z&][A-Za-z'\u2019.&-]*)/;
+  const NEXT_WORD = /^[ \u00a0]*[,-]?[ \u00a0]*([A-Za-z&][A-Za-z'\u2019.&-]*)/;
   function vetoed(alias, text, end) {
     const words = VETO[alias];
     if (!words) return false;

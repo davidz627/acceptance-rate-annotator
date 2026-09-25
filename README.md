@@ -38,6 +38,10 @@ After changing aliases, run `node scripts/wikitest.mjs` (page text is cached in 
 extension's real matcher over college-heavy Wikipedia pages and "bait" pages where a name means something else,
 and prints the ambiguous matches and the institution-like phrases it missed. Read it and judge; it isn't pass/fail.
 
+To decide whether a short alias is worth keeping, run `node scripts/wikisample.mjs <alias>`. It samples 150 random
+articles containing the alias, shows one standalone occurrence from each and whether it gets badged; count how many
+actually mean the school. The title list is cached, so re-running after a matcher change compares the same articles.
+
 ## Limitations
 
 - U.S. schools only (Scorecard has no international data).
@@ -49,6 +53,7 @@ and prints the ambiguous matches and the institution-like phrases it missed. Rea
   (`Chris Cornell`, `North Dakota State`), when a colon follows (`Princeton: Princeton University Press`), or when
   `, <state>` follows in a locative context (`born in Princeton, New Jersey`).
 - Bare `Berkeley` and `Wellesley` are not aliases: sampled across Wikipedia, only ~5% of bare uses meant the school.
+  Bare `Amherst` is dropped too (~20%; mostly the towns in Massachusetts, New York and Nova Scotia, or UMass).
 - `_notFollowedBy` in `data/aliases.json` cancels a match when a specific word follows it (`Purdue Pharma`,
   `Trinity College Dublin`).
 - Names shared by several unrelated schools (`Bethel University`, `Westminster College`) are never matched.

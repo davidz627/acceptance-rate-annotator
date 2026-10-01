@@ -69,7 +69,7 @@
     return true;
   }
   // A short form followed by a colon is a place in a bibliography ("Berkeley: University of
-  // California Press"). One followed by ", <state>" is the town ("Princeton, New Jersey"),
+  // California Press"). One followed by ", <state>" or a bare postal code is the town ("Princeton, New Jersey"),
   // but only when the surrounding text reads as a location, so a list like
   // "Purdue, Indiana and Ohio State" still matches: postal/dotted abbreviations always count;
   // full state names count when preceded by a locative word or followed by end punctuation.
@@ -78,10 +78,14 @@
   const STATE_NAME = "Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|Kansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming|District of Columbia|" +
     "Guyana|British Guiana|England|Scotland|Wales|Ireland|Canada|Ontario|Quebec|Nova Scotia|Prince Edward Island|Australia|New Zealand|Jamaica|United States|USA|U\\.S\\.";
   const STATE_AFTER = new RegExp(`^,[ \\u00a0]*(?:(${STATE_ABBR})|(${STATE_NAME}))(?![A-Za-z])`);
+  // Without the comma ("Syracuse NY") only postal codes count, minus ones that are also
+  // degrees or words ("Cornell MD", "Stanford MS", "Duke OR Harvard").
+  const STATE_AFTER_NO_COMMA = /^[ \u00a0]+(?:A[KLRZ]|C[AT]|FL|GA|I[ADL]|K[SY]|LA|M[INOT]|N[CDEHJMVY]|OH|RI|S[CD]|T[NX]|UT|V[AT]|W[AIVY]|DC|N\.[A-Z]\.|S\.[A-Z]\.)(?![A-Za-z])/;
   const LOCATIVE_BEFORE = /\b(?:in|at|from|to|near|of|into|around|outside|born|died|lives|lived|based|located|moved|settled|headquartered)[ \u00a0]+$/i;
   function followedByPlaceMarker(text, start, end) {
     const after = text.slice(end, end + 60);
     if (/^[ \u00a0]*:/.test(after)) return true;
+    if (STATE_AFTER_NO_COMMA.test(after)) return true;
     const m = STATE_AFTER.exec(after);
     if (!m) return false;
     if (m[1]) return true; // abbreviation

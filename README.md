@@ -8,7 +8,11 @@ Personal Chrome extension. Whenever a U.S. college or university name appears on
 
 Hover a badge for the full school name, location, exact rate, and data date.
 
-## Install (unpacked)
+## Install
+
+Install it from the [Chrome Web Store](https://chromewebstore.google.com/detail/acceptance-rate-annotator/pmcahacgeepakbjppppabjbfaephpfnm).
+
+### From source (unpacked)
 
 1. `git clone` this repo.
 2. Open `chrome://extensions`, turn on **Developer mode** (top right).
@@ -79,3 +83,7 @@ See [PRIVACY.md](PRIVACY.md). Short version: everything runs locally, nothing is
 ## Publishing
 
 See [`docs/store-listing.md`](docs/store-listing.md). Build the upload zip with `scripts/package.sh`.
+
+## License
+
+[MIT](LICENSE). The College Scorecard data is a U.S. government work and is in the public domain.

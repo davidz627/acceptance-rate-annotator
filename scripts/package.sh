@@ -6,6 +6,6 @@ VERSION=$(node -p "require('./manifest.json').version")
 mkdir -p dist
 OUT="dist/acceptance-rate-annotator-$VERSION.zip"
 rm -f "$OUT"
-zip -qr "$OUT" manifest.json src icons data/colleges.js -x '*.DS_Store'
+zip -qr "$OUT" manifest.json LICENSE src icons data/colleges.js -x '*.DS_Store'
 echo "wrote $OUT ($(du -h "$OUT" | cut -f1))"
 unzip -l "$OUT"
